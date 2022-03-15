@@ -21,4 +21,5 @@ while i < 484
     Movie.create(title: movie['original_title'], overview: movie['overview'], rating: movie['vote_average'], poster_url: "https://image.tmdb.org/t/p/w500#{movie['poster_path']}")
   end
   i += 1
+  puts "#{i} pages of movies created"
 end
