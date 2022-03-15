@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-1 col-md-4">
+    </div>
+    <div class="col col-md-4 mt-5">
+      <h1 class="mb-3">Add a movie</h1>
+
+      <%= simple_form_for [@list, @bookmark] do |f| %>
+      <%= f.association :movie, prompt: '🎞 🎞 🎞', style: "overflow: auto;" %>
+      <%= f.input :comment, label: "Leave a comment:",as: :text %>
+      <%= f.submit "Submit", class: 'btn btn-primary mt-3' %>
+      <% end %>
+      <%= link_to "cancel", list_path(@list), class: "btn kill-link kill-decoration", id: "cancel-form" %>
+    </div>
+     <div class="col-1 col-md-4">
+     </div>
+  </div>
+</div>
