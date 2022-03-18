@@ -6,9 +6,7 @@
       <h1 class="mb-3">Add a movie</h1>
 
       <%= simple_form_for [@list, @bookmark] do |f| %>
-      <%= f.association :movie, prompt: '🎞 🎞 🎞', style: "overflow: auto;" %>
-      <%= f.input :comment, label: "Leave a comment:",as: :text %>
-      <%= f.submit "Submit", class: 'btn btn-primary mt-3' %>
+      <%= f.input :movie, prompt: '🎞 🎞 🎞', style: "overflow: auto;" %>
       <% end %>
       <%= link_to "cancel", list_path(@list), class: "btn kill-link kill-decoration", id: "cancel-form" %>
     </div>
@@ -16,3 +14,24 @@
      </div>
   </div>
 </div>
+
+    <% @list.bookmarks.each do |bookmark| %>
+      <div data-controller="hello" class="col col-md-4 col-lg-4 mt-5">
+        <div  class="card-trip mb-5">
+            <%= image_tag bookmark.movie.poster_url, class: "poster" %>
+            <div data-hello-target="infos" class="add d-flex align-items-center justify-content-between">
+              <h2 class="mt-2 mb-2" id="add-title"><%= bookmark.movie.title %></h2>
+              <div data-action="click->hello#displayForm" class="btn add-btn">+</div>
+            </div>
+          <div  data-hello-target="form" class="d-none card-trip-infos">
+            <%= simple_form_for bookmark, html: { class: "d-non", data: { edit_movie_target: "form" } } do |f| %>
+            <%= f.input :comment, label: "Leave a comment:",as: :text %>
+            <div class="from-form d-flex">
+            <%= f.submit "Submit", class: 'btn btn-primary mt-3' %>
+            <div data-action="click->hello#cancelForm" class="btn">cancel</div>
+            </div>
+           <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
