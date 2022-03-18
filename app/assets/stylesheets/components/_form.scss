@@ -4,7 +4,7 @@
 
 
 .add-btn {
-  background: linear-gradient(45deg, #0d6efd, #0d6efd);
+  background: linear-gradient(45deg, #1EDD88, #76f9bf);
   border-radius: 50%;
   width: 35px;
   height: 35px;
@@ -12,14 +12,49 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  bottom: 15px;
-  right: 20px;
+  bottom: 26px;
+  right: 26px;
+  color: white;
+  &:hover {
+    color: white;
+  }
 }
 
 #add-title {
-  margin-left: 15px;
+  margin-left: 13px;
+  font-size: 11px;
 }
 
 .from-form {
   flex-direction: column;
+}
+
+.submit-form {
+  margin: auto;
+}
+
+.form-movie-title {
+
+}
+
+.display {
+  min-height: 100vh;
+}
+
+
+.target {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.show-form-card {
+  width: 80%;
+  margin: auto;
+}
+
+.form-poster {
+  width: 100%;
 }

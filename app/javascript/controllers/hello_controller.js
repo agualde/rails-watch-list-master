@@ -10,7 +10,8 @@ export default class extends Controller {
     // console.log(this.cardTarget);
   }
 
-  displayForm() {
+  displayForm(event) {
+    event.preventDefault()
     this.infosTarget.classList.add('d-none');
     this.formTarget.classList.remove('d-none');
   }
@@ -19,4 +20,13 @@ export default class extends Controller {
     this.infosTarget.classList.remove('d-none');
     this.formTarget.classList.add('d-none');
   }
+
+  add(event) {
+    event.preventDefault()
+    event.stopImmediatePropagation()
+    console.log('titis')
+    // this.infosTarget.classList.remove('d-none');
+    // this.formTarget.classList.add('d-none');
+  }
+
 }
