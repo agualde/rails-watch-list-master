@@ -8,6 +8,7 @@ export default class extends Controller {
 // }
 
 update(event) {
+    // setTimeout(1000000)
     const url = `${this.formTarget.action}?query=${this.inputTarget.value}`
 
     if (this.inputTarget.value != "") {
