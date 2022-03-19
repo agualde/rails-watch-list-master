@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   def index
-    # raise
-    # @list = List.find(params[:list_id])
+    
+    @list = List.find(1)
     @bookmark = Bookmark.new
     @movies = Movie.all.limit(100)
 

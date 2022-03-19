@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
-  static targets = [ "infos", "form", "card", "remove" ]
+  static targets = [ "infos", "form", "card", "remove", "image1", "image2" ]
 
   connect() {
     // console.log('hello')
@@ -15,11 +15,16 @@ export default class extends Controller {
     event.preventDefault()
     this.infosTarget.classList.add('d-none');
     this.removeTarget.classList.remove('d-none');
+    this.image1Target.classList.add('d-none');
+    this.image2Target.classList.remove('d-none');
   }
 
-  cancelForm() {
+  cancelForm(event) {
+    event.preventDefault()
     this.infosTarget.classList.remove('d-none');
     this.removeTarget.classList.add('d-none');
+    this.image1Target.classList.remove('d-none');
+    this.image2Target.classList.add('d-none');
   }
 
   add(event) {
@@ -38,7 +43,7 @@ export default class extends Controller {
     },
     body: new FormData(this.formTarget)
   })
-
+  alert('Movie added to list!')
 }
 
 }
