@@ -18,7 +18,7 @@ while i < 484
   data = JSON.parse(json)
   movies = data['results']
   movies.each do |movie|
-    Movie.create(title: movie['original_title'], overview: movie['overview'], rating: movie['vote_average'], poster_url: "https://image.tmdb.org/t/p/w500#{movie['poster_path']}")
+    Movie.create(title: movie['original_title'], overview: movie['overview'], rating: movie['vote_average'], poster_url: "https://image.tmdb.org/t/p/w500#{movie['poster_path']}", english_title: movie['title'])
   end
   i += 1
   puts "#{i} pages of movies created"
