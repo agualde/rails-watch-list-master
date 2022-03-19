@@ -1,25 +1,25 @@
-<div>
-  <div class="display-target" data-search-movies-target="list form">
-      <% @movies.each do |movie| %>
-        <div data-controller="hello" class="col show-form-card col-md-4 col-lg-4 my-3">
-          <div  class="card-trip">
-              <a href="#" class= "form-poster" data-action="click->hello#displayForm"><%= image_tag movie.poster_url, class: "form-poster" %></a>
-              <div data-hello-target="infos" class="add d-flex align-items-center justify-content-between">
-                <h2 class="my-3" id="add-title"><%= movie.title %></h2>
-                <div data-action="click->hello#displayForm" class="btn add-btn">+</div>
-              </div>
-            <div  data-hello-target="form" class="d-none card-trip-infos">
-              <%# <%= simple_form_for bookmark, method: :post, html: { class: "d-non", data: { edit_movie_target: "form" } } do |f| %> %>
-              <%# <%= f.input :comment, label: "Leave a comment:",as: :text %> %>
-          
-              <div class="from-form d-flex">
-                  <%# <%= f.submit "Add", class: 'btn col-4 submit-form btn-success mt-3' %> %>
-              <div data-action="click->hello#cancelForm" class="btn" style="font-size: 8px;">cancel</div>
-              </div>
-            <%# <% end %> %>
-            </div>
-          </div>
+<div data-controller="search-movies">
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-4 mt-5" style="margin: auto; width: fit-content;">
+        <h1 class="mb-3" >Add a movie</h1>
+      </div>
+      <div>
+        <%= form_with url: movies_path, method: :get, html: { class:
+          'mb-4', data: { search_movies_target: 'form' } } do |f| %>
+          <%= f.hidden_field(:list_id, :value => params[:list_id])%>  
+          <%= f.text_field :query,
+                          class: "form-control",
+                          placeholder: 'Search any movie title',
+                          value: params[:query],
+                          data: {
+                            search_movies_target: 'input',
+                          action: 'keyup->search-movies#update'
+                        } %>
+                          <% end %>
         </div>
-      <% end %>
+        <%# <%= link_to "cancel", list_path(@list), class: "btn kill-link kill-decoration mb-5", id: "cancel-form" %>
   </div>
+  <div class="display" data-search-movies-target="list">
+  <%= render "movies/list" %>
 </div>

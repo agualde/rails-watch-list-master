@@ -53,5 +53,6 @@ gem "font-awesome-sass", "~> 5.15"
 gem "simple_form"
 gem 'font_awesome5_rails'
 gem 'stimulus-rails'
+gem 'pg_search', '~> 2.3.0'
 gem 'open-uri'
 gem 'json', '~> 2.6', '>= 2.6.1'

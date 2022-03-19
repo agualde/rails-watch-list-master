@@ -1,18 +1,18 @@
 class MoviesController < ApplicationController
   def index
-    raise
-    # @list = List.find[params[:list_id]]
+    # raise
+    # @list = List.find(params[:list_id])
     @bookmark = Bookmark.new
-    @movies = Movie.all.limit(10)
+    @movies = Movie.all.limit(100)
 
         if params[:query].present?
-        @movies = @movies.where('title ILIKE ?', "%#{params[:query]}%").limit(10)
+        @movies = @movies.global_search(params[:query]).limit(100)
           respond_to do |format|
             format.html
             format.text { render partial: 'movies/list', locals: { movies: @movies, bookmark: @bookmark }, formats: [:html] }
           end
         else
-          @movies = Movie.all.limit(10)
+          @movies = Movie.all.limit(100)
         end
   end
 
