@@ -10,15 +10,15 @@
               </div>
             <div  data-hello-target="form" class="d-none card-trip-infos">
             
-              <%# <%= simple_form_for list_bookmarks_path, method: :post, html: { class: "d-non", data: { hello_target: "form", action: 'submit->hello#add' } } do |f| %> %>
-              <%# <%= f.input :comment, label: "Leave a comment:", as: :text %> %>
+              <%= simple_form_for :bookmark, method: 'post', html: { class: "d-non", id: "form_id", data: { hello_target: "form", action: 'submit->hello#add' } } do |f| %>
+              <%= f.input :comment, label: "Leave a comment:", as: :text %>
           
               <div class="from-form d-flex">
-                  <%# <%= f.submit "Add", class: 'btn col-4 submit-form btn-success mt-3' %> %>
+                  <%= f.submit "Add", class: 'btn col-4 submit-form btn-success mt-3' %>
                  <div data-action="click->hello#cancelForm" class="btn" style="font-size: 8px;">cancel</div>
               </div>
 
-            <%# <% end %> %>
+            <% end %>
             </div>
           </div>
         </div>

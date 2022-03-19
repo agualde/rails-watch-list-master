@@ -7,9 +7,10 @@
       <div>
         <%= form_with url: movies_path, method: :get, html: { class:
           'mb-4', data: { search_movies_target: 'form' } } do |f| %>
+          <%= f.hidden_field(:list_id, :value => params[:list_id])%>  
           <%= f.text_field :query,
                           class: "form-control",
-                          placeholder: 'Type a movie title',
+                          placeholder: 'Search any movie title',
                           value: params[:query],
                           data: {
                             search_movies_target: 'input',
@@ -17,7 +18,7 @@
                         } %>
                           <% end %>
         </div>
-        <%= link_to "cancel", list_path(@list), class: "btn kill-link kill-decoration", id: "cancel-form" %>
+        <%= link_to "cancel", list_path(@list), class: "btn kill-link kill-decoration mb-5", id: "cancel-form" %>
   </div>
   <div class="display" data-search-movies-target="list">
   <%= render "movies/list" %>

@@ -14,10 +14,13 @@ class BookmarksController < ApplicationController
   def new
     @list = List.find(params[:list_id])
     @bookmark = Bookmark.new
+    @bookmark.list = @list
+    @bookmark.save
     @movies = Movie.all.limit(20)
   end
 
   def create
+    raise
     @list = List.find(params[:list_id])
     @bookmark = Bookmark.new(bookmark_params)
     @bookmark.list = @list
